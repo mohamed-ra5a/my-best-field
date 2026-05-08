@@ -6,7 +6,7 @@ FuturePath is a modern web application designed to help students and young profe
 
 The platform includes an interactive career quiz, personalized career recommendations, skill roadmaps, salary insights, and a clean dashboard experience.
 
----
+
 
 ## About The Project
 
@@ -14,7 +14,7 @@ Choosing a future career can be confusing for many students. FuturePath was crea
 
 Users answer a set of questions, and the system analyzes their responses to suggest suitable career paths along with useful learning guidance.
 
----
+
 
 ## Features
 
@@ -29,7 +29,8 @@ Users answer a set of questions, and the system analyzes their responses to sugg
 - Responsive design for different devices
 - Local storage support
 
-## web image: ![Uploading futurePath.png…]()
+## web image: <img width="959" height="443" alt="futurePath" src="https://github.com/user-attachments/assets/8ee84a6b-d194-4d51-9b05-5a44b01de0a9" />
+
 
 
 ## Technologies Used
@@ -40,7 +41,7 @@ Users answer a set of questions, and the system analyzes their responses to sugg
 - Chart.js
 - Font Awesome
 
----
+
 
 ## How It Works
 
@@ -56,7 +57,7 @@ Users answer a set of questions, and the system analyzes their responses to sugg
    - Learning roadmap
 5. Users can save careers to their dashboard.
 
----
+
 
 ## Project Structure
 
@@ -69,7 +70,7 @@ FuturePath/
 └── README.md
 ```
 
----
+
 
 ## Live Demo
 
@@ -77,7 +78,7 @@ Playable Website URL:
 
 "https://mohamed-ra5a.github.io/my-best-field/"
 
----
+
 
 ## Future Improvements
 
@@ -91,22 +92,20 @@ Some features planned for future versions:
 - Mobile application version
 - Multi-language support
 
----
+
 
 ## Author
 
 Mohamed Mahany
 
-Frontend Developer and STEM student interested in web development,  and modern user experiences.
+web Developer and STEM student interested in web development,  and modern user experiences.
 
----
+
 
 ## License
 
 This project is available for educational and personal use.
 
----
 
-## Final Note
 
-FuturePath was built as a project focused on helping students better understand possible career directions through a modern and interactive experience.
+
