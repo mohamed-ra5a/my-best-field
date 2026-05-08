@@ -29,7 +29,8 @@ Users answer a set of questions, and the system analyzes their responses to sugg
 - Responsive design for different devices
 - Local storage support
 
----
+## web image: ![Uploading futurePath.png…]()
+
 
 ## Technologies Used
 
