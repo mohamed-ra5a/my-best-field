@@ -1,43 +1,646 @@
-<!DOCTYPE html>
-<html lang = "en">
+ <!DOCTYPE html>
+    <html lang="en">
 <head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-      <title> My Best Field </title>
-    <link rel = "stylesheet" href ="style.css" >
- </head>
+   <meta charset = "UTF-8" >
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0, user-scalable=yes">
+      <title> FuturePath | Career Discovery Platform </title>
+  <link href  ="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+        <style>
+    
+    * {
+      margin : 0 ;
+      padding : 0 ;
+      box-sizing : border-box ;
+    }
+
+    body {
+      font-family : 'Inter' , sans-serif ;
+        background : #0F172A ;
+      color: #F1F5F9;
+       overflow-x : hidden ;
+         scroll-behavior : smooth ;
+    }
+
+     :root {
+      --primary-purple : #6C63FF;
+      --cyan-glow: #00D4FF ;
+      --dark-bg : #0F172A ;
+      --glass-effect : rgba(255, 255, 255, 0.05) ;
+      --border-light : rgba(108, 99, 255, 0.25) ;
+      --shadow-glow : 0 0 12px rgba(108, 99, 255, 0.4) ;
+      --transition: all 0.3s ease  ;
+    }
+
+    ::-webkit-scrollbar { width : 6px; }
+    ::-webkit-scrollbar-track { background : #1E293B; }
+    ::-webkit-scrollbar-thumb { background : var(--primary-purple); border-radius: 12px; }
+
+    .glass-card {
+      background : var(--glass-effect);
+        backdrop-filter : blur(12px);
+      border: 1px solid rgba(108, 99, 255, 0.2) ;
+       border-radius : 2rem ;
+    transition: var(--transition) ;
+    }
+    .glass-card:hover {
+      border-color : var(--primary-purple);
+      box-shadow : var(--shadow-glow);
+      transform: translateY(-4px) ;
+        }
+
+    button, .btn {
+      background : linear-gradient(135deg, var(--primary-purple), #4a55c9);
+        border: none ;
+       padding: 12px 28px ;
+      border-radius: 40px ;
+       font-weight : 600 ;
+      color: white;
+       cursor: pointer;
+       transition: var(--transition);
+        font-size: 1rem;
+        box-shadow : 0 4px 12px rgba(110, 100, 260, 0.4);
+    }
+    button:hover {
+       transform : scale(1.02) ;
+      box-shadow  : 0 8px 20px rgba(108, 100, 255, 0.5) ;
+      background  : linear-gradient(135deg, #7c77ff, #5b55e0) ;
+    }
+
+      .btn-outline {
+      background : transparent ;
+        border : 1.5px solid var(--cyan-glow) ;
+      box-shadow : none ;
+    }
+    .btn-outline:hover {
+      background : rgba(0, 215, 262, 0.3) ;
+       border-color : var(--primary-purple);
+      }
+
+    .navbar {
+      display : flex;
+       justify-content : space-between ;
+        align-items : center ;
+      padding: 1.2rem 5%;
+       max-width : 1400px ;
+       margin : 0 auto ;
+       flex-wrap: wrap  ;
+      }
+    .logo  {
+      font-size: 1.9rem ;
+       font-weight: 810 ;
+      background  : linear-gradient(125deg, #ffff, var(--cyan-glow)) ;
+        -webkit-background-clip : text;
+      background-clip : text ;
+      color: transparent ;
+    }
+    .nav-links a   {
+      color : #CBD5E1 ;
+      margin-left : 2rem ;
+        text-decoration : none ;
+      font-weight: 500;
+       transition: 0.2s ;
+      }
+    .nav-links a:hover, .nav-links a.active-page  {
+      color : var(--cyan-glow) ;
+    }
+
+    .container  {
+      max-width : 1300px ;
+      margin : 0 auto ;
+      padding : 2rem 5% ;
+      }
+
+    section {
+      margin-bottom : 5.2rem  ;
+    }
+    .hero  {
+      display : flex ;
+        flex-wrap : wrap  ;
+      align-items: center;
+       justify-content : space-between ;
+      gap: 2rem;
+      }
+     .hero-text   { flex : 1; }
+    .hero-text h1   {
+      font-size : 3.5rem ;
+      font-weight : 810;
+      background  : linear-gradient(135deg, #FFFFFF, var(--cyan-glow), var(--primary-purple));
+      -webkit-background-clip : text ;
+      background-clip : text ;
+      color  : transparent  ;
+    }
+    .hero-text p {
+      font-size  : 1.2rem  ;
+      color  : #94A3B8  ;
+        margin  : 1.5rem 0 ;
+    }
+    .hero-illustration   {
+       flex : 1.5 ;
+      text-align : center ;
+        font-size : 7rem ;
+      filter: drop-shadow(0 0 15px var(--primary-purple));
+      }
+
+     .features-grid  {
+        display : grid ;
+      grid-template-columns  : repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem ;
+        margin-top: 2rem ;
+    }
+    .feature-card {
+       padding : 2rem ;
+       text-align : center ;
+    }
+    .feature-card i {
+      font-size : 2.5rem ;
+      color : var(--cyan-glow) ;
+      margin-bottom : 1rem ;
+    }
+
+    .testimonials {
+         display : flex ;
+       flex-wrap : wrap ;
+       gap : 2rem ;
+        justify-content : center ;
+    }
+      .testimonial-card  {
+       padding : 1.8rem ;
+      max-width : 320px ;
+         background: var(--glass-effect) ;
+       border-radius: 2rem;
+    }
+    .quiz-step {
+      display : none ;
+        animation : fadeSlide 0.5s ease ;
+    }
+     .quiz-step.active-quiz-step  {
+      display : block ;
+    }
+    @keyframes fadeSlide  {
+      from { opacity: 0; transform : translateX(20px);}
+       to { opacity: 1; transform : translateX(0);}
+       }
+     .options-grid {
+      display : flex ;
+        flex-wrap : wrap ;
+       gap: 1.5rem;
+      margin: 2rem 0;
+    }
+      .quiz-card {
+      background : rgba(255,255,255,0.05) ;
+       border-radius  : 1.5rem ;
+       padding: 1rem 2rem;
+        cursor: pointer;
+      transition: 0.2s;
+        text-align : center;
+       font-weight : 500 ;
+      flex: 1 1 170px;
+         border : 1px solid transparent ;
+    }
+    .quiz-card i {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--cyan-glow);
+    }
+    .quiz-card.selected-answer {
+      border-color: var(--primary-purple);
+      background: rgba(108, 99, 255, 0.2);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .progress-bar {
+      width: 100%;
+        height: 8px;
+      background : #334155;
+      border-radius : 12px;
+        overflow: hidden ;
+      margin: 2rem 0;
+    }
+      .progress-fill-custom {
+      width : 0%;
+        height: 100%;
+      background: linear-gradient(90deg, var(--primary-purple), var(--cyan-glow));
+       transition: width 0.3s;
+      }
+
+    .result-card, .career-item {
+        background:  var(--glass-effect);
+      border-radius : 1.8rem;
+       padding: 1.5rem ;
+         margin-bottom : 1.2rem ;
+    }
+    .skills-badge {
+      background  : rgba(0,212,255,0.15);
+        border-radius: 40px;
+      padding : 0.3rem 1rem;
+      display : inline-block  ;
+        margin : 0.2rem ;
+    }
+     .dashboard-stats {
+      display : flex ;
+        gap : 1rem ;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+        background: var(--glass-effect);
+      border-radius : 1.5rem;
+       padding: 1.2rem;
+      flex : 1 ;
+      }
+
+      footer {
+      background : #0B1120;
+        padding: 2rem 5%;
+      text-align: center;
+       border-top : 1px solid rgba(108,99,255,0.2) ;
+    }
+
+      .hide-section {
+      display: none;
+      }
+      .loading-overlay {
+      position : fixed;
+        top :0; left:0 ; width :100%; height:100%;
+        background : #0F172A;
+      display : flex  ;
+       align-items  : center ;
+        justify-content: center ;
+        z-index: 2000 ;
+      backdrop-filter: blur(8px);
+       flex-direction: column ;
+         transition: opacity 0.5s;
+    }
+    .spinner-loader {
+      width: 60px;
+        height: 60px;
+      border : 4px solid rgba(108,99,255,0.3);
+       border-top: 4px solid var(--cyan-glow);
+      border-radius : 50% ;
+       animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 768px) {
+      .hero-text h1 { font-size: 2.3rem; }
+      .navbar { flex-direction: column; gap: 1rem; }
+      .nav-links a { margin: 0 1rem; }
+    }
+    .theme-toggle-switch {
+       background: #1E293B;
+      border-radius: 60px;
+        padding: 6px 12px ;
+      cursor: pointer;
+    }
+    .salary-bar-bg {
+       height: 8px ;
+      background : #334155;
+        border-radius: 12px ;
+       width : 100%;
+      }
+    .salary-fill-custom {
+         height: 8px;
+      background: var(--cyan-glow);
+       border-radius: 12px ;
+       width : 70% ;
+    }
+  </style>
+</head>
 <body>
 
-<header >
-    <h1 >My Best Field</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="jobs/developer.html">Developer</a>
-        <a href="jobs/designer.html">Designer</a>
-        <a href="jobs/doctor.html">Doctor</a>
-    </nav> 
-</header>
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="spinner-loader"></div>
+  <h3 style="margin-top: 20px;">FuturePath · Mapping your future</h3>
+</div>
 
-<section class= " hero ">
-    <h2> Find the Right Career for You</h2>
-    <p>
-        Choosing your career is one of the most important decisions in life.
-        This website helps you explore different fields based on your interests,
-        skills, and personality.
-    </p>
-</section>
+<nav class="navbar" id="mainNavbar">
+  <div class="logo"><i class="fas fa-compass"></i> FuturePath</div>
+  <div class="nav-links">
+    <a href="#" data-nav="landing" class="nav-link active-page">Explore</a>
+    <a href="#" data-nav="quiz" class="nav-link">Compass Quiz</a>
+    <a href="#" data-nav="dashboard" class="nav-link">My Space</a>
+    <span id="darkModeToggleBtn" class="theme-toggle-switch"><i class="fas fa-moon"></i> <i class="fas fa-sun" style="display: none;"></i> Tone</span>
+  </div>
+</nav>
 
-<section class = " about ">
-      <h2> How It Works </h2>
-    <p>
-        We provide simple guides for different jobs. Each page explains what the job is,
-        what skills you need, and whether it might suit you or not.
-       </p>
-  </section>
+<div id="landingContainer" class="page-block">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Discover Your Perfect Future Career</h1>
+        <p>Personalized career mapping for students & young professionals. Find majors, job paths and skills that fit you.</p>
+        <button id="beginQuizBtn" class="btn"> Start Discovery →</button>
+      </div>
+      <div class="hero-illustration">
+        <i class="fas fa-chalkboard-user"></i> <i class="fas fa-brain"></i>
+      </div>
+    </div>
+    <section>
+      <h2 style="font-size: 2rem; text-align: center;"> Tools to Shape Tomorrow</h2>
+      <div class="features-grid">
+        <div class="feature-card glass-card"><i class="fas fa-robot"></i><h3>Smart Chat Mentor</h3><p>Get real-time guidance & motivation</p></div>
+        <div class="feature-card glass-card"><i class="fas fa-chart-line"></i><h3>Skill Progress Tracker</h3><p>Track your growth & learning</p></div>
+        <div class="feature-card glass-card"><i class="fas fa-university"></i><h3>University Matches</h3><p>Top majors & institutions</p></div>
+        <div class="feature-card glass-card"><i class="fas fa-chart-simple"></i><h3>Salary & Demand</h3><p>Future outlook & earning potential</p></div>
+      </div>
+    </section>
+    <section>
+      <h2 style="text-align: center;"> Real Voices</h2>
+      <div class="testimonials">
+        <div class="testimonial-card glass-card"><i class="fas fa-quote-left"></i><p>“FuturePath gave me clarity in 5 minutes — now I'm pursuing Data Science with a clear roadmap!”</p><h4>— Emily R.</h4></div>
+        <div class="testimonial-card glass-card"><i class="fas fa-quote-left"></i><p>“The UI is stunning and results are super accurate. Finally a career tool for Gen Z!”</p><h4>— James L.</h4></div>
+      </div>
+    </section>
+  </div>
+</div>
 
- <footer>
-    <p>© 2026 My Best Field</p>
- </footer>
 
+<div id="quizContainer" class="page-block hide-section">
+  <div class="container">
+    <h2><i class="fas fa-clipboard-list"></i> Career Compass Quiz</h2>
+    <div class="progress-bar"><div id="dynamicProgressFill" class="progress-fill-custom"></div></div>
+    <div id="quizStepsWrapper"></div>
+    <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+      <button id="quizPrevBtn" class="btn-outline" style="background:transparent;">← Previous</button>
+      <button id="quizNextBtn" class="btn">Next →</button>
+    </div>
+
+  </div>
+</div>
+
+<div id="resultsContainer" class="page-block hide-section">
+  <div class="container">
+    <h2><i class="fas fa-chart-pie"></i> Your Personalized Career Report</h2>
+    <div id="resultsSummaryBlock"></div>
+    <canvas id="careerMatchChart" width="400" height="200" style="max-height: 250px; margin: 2rem 0;"></canvas>
+    <div id="resultsDetailBlock"></div>
+    <button id="saveToProfileBtn" class="btn"> Save to Dashboard</button>
+    <button id="redoQuizBtn" class="btn-outline" style="margin-left: 1rem;">⟳ Redo Quiz</button>
+  </div>
+</div>
+
+<div id="dashboardContainer" class="page-block hide-section">
+  <div class="container">
+    <h2><i class="fas fa-tachometer-alt"></i> Your Dashboard</h2>
+    <div class="dashboard-stats">
+      <div class="stat-card glass-card"><i class="fas fa-star"></i><h3>Saved Careers</h3><p id="favCareersCount">0</p></div>
+      <div class="stat-card glass-card"><i class="fas fa-chart-line"></i><h3>Skill Progress</h3><p> Beginner → Advanced Roadmap</p><div class="salary-bar-bg"><div class="salary-fill-custom" style="width: 40%;"></div></div></div>
+      <div class="stat-card glass-card"><i class="fas fa-graduation-cap"></i><h3>Learning Path</h3><p>Recommended courses ready</p></div>
+    </div> 
+    <div id="savedCareersListArea"></div>
+    <div id="goalSetterWidget">
+      <h3> Set Career Goal</h3>
+      <input type="text" id="goalInputField" placeholder="e.g., Become a Cybersecurity Analyst" class="glass-card" style="padding: 12px; width: 70%; background: rgba(255,255,255,0.05); border: none; border-radius: 40px;">
+      <button id="setGoalBtnAction">Set Goal</button>
+      <p id="currentGoalDisplayText"></p>
+    </div>
+    <button id="retakeQuizFromDashBtn" class="btn-outline">⟳ Retake Quiz for new insights</button>
+    <div id="dailyQuoteBox" class="glass-card" style="margin-top: 2rem; padding: 1rem;"><i class="fas fa-quote-right"></i> “The future depends on what you do today.” — Einstein</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 FuturePath — Career mapping for next-gen builders </p>
+</footer>
+<script>
+  const quizQuestionsList = [
+    { text: "What subjects do you enjoy?", options: ["Math & Tech", "Arts & Design", "Biology & Health", "Business & Communication"] },
+    { text: "Do you prefer creativity or logic?", options: ["Creativity", "Logic & Analysis", "Both equally"] },
+    { text: "Do you enjoy teamwork?", options: ["Love teamwork", "Prefer solo", "Balanced"] },
+    { text: "Do you like technology?", options: ["Absolutely!", "Somewhat", "Not really"] },
+    { text: "Are you interested in helping people?", options: ["Yes, deeply", "Occasionally", "Neutral"] },
+    { text: "Do you enjoy solving problems?", options: ["Love challenges", "Only if structured", "Not my priority"] }
+  ];
+
+  const careerDataMap = {
+    "Software Engineering": { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Neutral","Love challenges"], majors: "Computer Science, Software Engineering", jobs: "Full-stack Dev, Cloud Engineer", skills: "Python, JavaScript, DSA, Git", salary: "$95k - $150k", demand: "Very High", roadmap: "CS50 → LeetCode → Portfolio" },
+    "UI/UX Design": { matchKeywords: ["Arts & Design","Creativity","Balanced","Somewhat","Occasionally","Love challenges"], majors: "Interactive Design, HCI", jobs: "UX Designer, Product Designer", skills: "Figma, User Research, Prototyping", salary: "$75k - $120k", demand: "High", roadmap: "Google UX Cert → Case Studies" },
+    "Cybersecurity": { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Neutral","Love challenges"], majors: "Cybersecurity, InfoSec", jobs: "Security Analyst, Pen Tester", skills: "Network Security, Linux, Cryptography", salary: "$90k - $160k", demand: "Very High", roadmap: "Security+ → CTF → CISSP" },
+    "Medicine": { matchKeywords: ["Biology & Health","Logic & Analysis","Love teamwork","Somewhat","Yes, deeply","Love challenges"], majors: "Pre-Med, Nursing", jobs: "Physician, Surgeon", skills: "Empathy, Diagnostics, Anatomy", salary: "$200k+", demand: "Always High", roadmap: "MCAT → Med School → Residency" },
+    "Data Science": { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Occasionally","Love challenges"], majors: "Data Science, Statistics", jobs: "Data Analyst, ML Engineer", skills: "SQL, Python, ML, Tableau", salary: "$85k - $140k", demand: "Explosive", roadmap: "Python → Statistics → Kaggle" },
+    "Marketing": { matchKeywords: ["Business & Communication","Creativity","Love teamwork","Somewhat","Occasionally","Only if structured"], majors: "Marketing, Communications", jobs: "Brand Manager, Digital Marketer", skills: "SEO, Content Strategy, Analytics", salary: "$60k - $110k", demand: "Stable", roadmap: "Google Digital Garage → HubSpot" }
+  };
+
+  let userSelectedAnswers = [];
+  let activeStepIndex = 0;
+  let latestCareerMatches = null;
+  let careerChartInstance = null;
+
+  // helpers
+  function renderQuizSteps() {
+    const container = document.getElementById("quizStepsWrapper");
+    if(!container) return;
+    let htmlOutput = `<div class="quiz-step active-quiz-step" data-step-index="0">${generateStepMarkup(0)}</div>`;
+    for(let i=1; i<quizQuestionsList.length; i++) {
+      htmlOutput += `<div class="quiz-step" data-step-index="${i}">${generateStepMarkup(i)}</div>`;
+    }
+    container.innerHTML = htmlOutput;
+    attachQuizCardEvents();
+    updateProgressFill();
+  }
+
+  function generateStepMarkup(step) {
+    const qItem = quizQuestionsList[step];
+    let optionsHtml = "";
+    qItem.options.forEach(opt => {
+      const isSelectedFlag = (userSelectedAnswers[step] === opt);
+      optionsHtml += `<div class="quiz-card ${isSelectedFlag ? 'selected-answer' : ''}" data-opt-value="${opt}"><i class="fas ${getIconBasedOnOption(opt)}"></i> ${opt}</div>`;
+    });
+    return `<h3>${qItem.text}</h3><div class="options-grid">${optionsHtml}</div>`;
+  }
+
+  function getIconBasedOnOption(opt) {
+    if(opt.includes("Tech") || opt.includes("Math")) return "fa-laptop-code";
+    if(opt.includes("Arts") || opt.includes("Creativity")) return "fa-palette";
+    if(opt.includes("Biology") || opt.includes("Health")) return "fa-heartbeat";
+    if(opt.includes("Business")) return "fa-chart-line";
+    if(opt.includes("Teamwork")) return "fa-users";
+    return "fa-star";
+  }
+
+  function attachQuizCardEvents() {
+    document.querySelectorAll(".quiz-card").forEach(card => {
+      card.addEventListener("click", (e) => {
+        const parentStepDiv = card.closest(".quiz-step");
+        const stepNumber = parseInt(parentStepDiv.dataset.stepIndex);
+        const chosenValue = card.dataset.optValue;
+        userSelectedAnswers[stepNumber] = chosenValue;
+        document.querySelectorAll(`.quiz-step[data-step-index="${stepNumber}"] .quiz-card`).forEach(c => c.classList.remove("selected-answer"));
+        card.classList.add("selected-answer");
+        updateProgressFill();
+      });
+    });
+  }
+
+  function updateProgressFill() {
+    const answeredCount = userSelectedAnswers.filter(a => a !== undefined).length;
+    const percentVal = (answeredCount / quizQuestionsList.length) * 100;
+    const fillElem = document.getElementById("dynamicProgressFill");
+    if(fillElem) fillElem.style.width = percentVal + "%";
+  }
+  function setActiveQuizStep(index) {
+    const allSteps = document.querySelectorAll(".quiz-step");
+    allSteps.forEach((step, i) => {
+      step.classList.toggle("active-quiz-step", i === index);
+    });
+    updateProgressFill();
+  }
+
+  function computeCareerMatchesScore() {
+    let scoreMap = {};
+    for(let [careerName, careerInfo] of Object.entries(careerDataMap)) {
+      let matchSum = 0;
+      careerInfo.matchKeywords.forEach(kw => {
+        if(userSelectedAnswers.some(ans => ans && ans.includes(kw))) matchSum += 16;
+        if(userSelectedAnswers.some(ans => ans === kw)) matchSum += 20;
+      });
+      let totalRaw = Math.min(100, matchSum + (userSelectedAnswers.length * 5));
+      scoreMap[careerName] = Math.floor(totalRaw);
+    }
+    let sortedCareers = Object.entries(scoreMap).sort((a,b)=> b[1]-a[1]);
+    return sortedCareers.slice(0,3);
+  }
+  function displayCareerResults() {
+    const topMatchesArray = computeCareerMatchesScore();
+    latestCareerMatches = topMatchesArray;
+    const summaryHtml = `<div class="result-card"><h3> Top Career Matches</h3>${topMatchesArray.map(([cName, perc]) => `<div><strong>${cName}</strong> — ${perc}% match <div class="salary-bar-bg"><div class="salary-fill-custom" style="width: ${perc}%;"></div></div></div>`).join('')}</div>`;
+    document.getElementById("resultsSummaryBlock").innerHTML = summaryHtml;
+    let detailsHtml = "";
+    topMatchesArray.forEach(([career, matchPercent]) => {
+      const dataRef = careerDataMap[career];
+      if(dataRef){
+        detailsHtml += `<div class="career-item glass-card"><h3><i class="fas fa-briefcase"></i> ${career}</h3><p><strong>🎓 Majors:</strong> ${dataRef.majors}</p><p><strong> Job Paths:</strong> ${dataRef.jobs}</p><p><strong>🔧 Skills to Learn:</strong> ${dataRef.skills.split(',').map(s=>`<span class="skills-badge">${s.trim()}</span>`).join('')}</p><p><strong> Salary Range:</strong> ${dataRef.salary}  |   Demand: ${dataRef.demand}</p><p><strong> Learning Roadmap:</strong> ${dataRef.roadmap}</p><p><strong> Advice:</strong> Focus on ${dataRef.skills.split(',')[0]} and build real projects.</p></div>`;
+      }
+    });
+    detailsHtml += `<div class="glass-card" style="padding:1rem"><i class="fas fa-chart-line"></i> Future demand indicator: ${topMatchesArray[0][1] > 70 ? " Skyrocketing" : " Growing"}</div>`;
+    document.getElementById("resultsDetailBlock").innerHTML = detailsHtml;
+    drawComparisonChart(topMatchesArray);
+  }
+  function drawComparisonChart(matches) {
+    const ctx = document.getElementById('careerMatchChart').getContext('2d');
+    if(careerChartInstance) careerChartInstance.destroy();
+    careerChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: { labels: matches.map(m=>m[0]), datasets: [{ label: 'Match %', data: matches.map(m=>m[1]), backgroundColor: '#6C63FF', borderRadius: 12 }] },
+      options: { responsive: true, maintainAspectRatio: true, scales: { y: { max: 100, grid: { color: '#334155' } } } }
+    });
+  }
+
+  function saveCareersToDashboard() {
+    if(latestCareerMatches) {
+      let storedCareers = JSON.parse(localStorage.getItem("futurepath_saved_list") || "[]");
+      const newCareerNames = latestCareerMatches.map(c => c[0]);
+      newCareerNames.forEach(c => { if(!storedCareers.includes(c)) storedCareers.push(c); });
+      localStorage.setItem("futurepath_saved_list", JSON.stringify(storedCareers));
+      updateDashboardUI();
+      alert("Saved to your dashboard!");
+    } else { alert("Complete the quiz first."); }
+  }
+
+  function updateDashboardUI() {
+    const savedCareersList = JSON.parse(localStorage.getItem("futurepath_saved_list") || "[]");
+    document.getElementById("favCareersCount").innerHTML = savedCareersList.length;
+    const containerDiv = document.getElementById("savedCareersListArea");
+    if(containerDiv) {
+      if(savedCareersList.length === 0) containerDiv.innerHTML = "<div class='glass-card'><p>No saved careers yet. Take the quiz and save your favorites!</p></div>";
+      else {
+        containerDiv.innerHTML = `<h3> Saved Careers</h3>` + savedCareersList.map(careerItem => {
+          const careerInfo = careerDataMap[careerItem];
+          return `<div class="glass-card" style="margin-bottom:1rem; padding:1rem;"><i class="fas fa-bookmark"></i> <strong>${careerItem}</strong> — ${careerInfo?.skills || "Build skills"} <button class="removeCareerBtn" data-career-name="${careerItem}" style="padding:4px 12px; margin-left:1rem;">Remove</button></div>`;
+        }).join('');
+        document.querySelectorAll('.removeCareerBtn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            let favs = JSON.parse(localStorage.getItem("futurepath_saved_list") || "[]");
+            const targetCareer = btn.dataset.careerName;
+            favs = favs.filter(c => c !== targetCareer);
+            localStorage.setItem("futurepath_saved_list", JSON.stringify(favs));
+            updateDashboardUI();
+          });
+        });
+      }
+    }
+    const storedGoal = localStorage.getItem("futurepath_goal_value");
+    if(storedGoal) document.getElementById("currentGoalDisplayText").innerHTML = ` Current goal: ${storedGoal}`;
+  }
+
+  function navigateTo(pageId) {
+    document.querySelectorAll(".page-block").forEach(block => block.classList.add("hide-section"));
+    if(pageId === "landing") document.getElementById("landingContainer").classList.remove("hide-section");
+    if(pageId === "quiz") document.getElementById("quizContainer").classList.remove("hide-section");
+    if(pageId === "results") document.getElementById("resultsContainer").classList.remove("hide-section");
+    if(pageId === "dashboard") { document.getElementById("dashboardContainer").classList.remove("hide-section"); updateDashboardUI(); }
+    document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active-page"));
+    document.querySelector(`[data-nav="${pageId}"]`).classList.add("active-page");
+    if(pageId === "results" && latestCareerMatches) displayCareerResults();
+  }
+
+  
+  window.addEventListener("load", () => {
+    setTimeout(() => { document.getElementById("loadingOverlay").style.display = "none"; }, 700);
+    renderQuizSteps();
+    navigateTo("landing");
+
+  
+    document.getElementById("beginQuizBtn")?.addEventListener("click", () => { navigateTo("quiz"); });
+    document.getElementById("quizNextBtn")?.addEventListener("click", () => {
+      if(userSelectedAnswers[activeStepIndex] === undefined) { alert("Please pick an answer"); return; }
+      if(activeStepIndex < quizQuestionsList.length-1) { activeStepIndex++; setActiveQuizStep(activeStepIndex); }
+      else { 
+        if(userSelectedAnswers.length === quizQuestionsList.length && !userSelectedAnswers.includes(undefined)) { 
+          displayCareerResults(); 
+          navigateTo("results"); 
+        } else alert("Answer all questions!"); 
+      }
+    });
+    document.getElementById("quizPrevBtn")?.addEventListener("click", () => { if(activeStepIndex > 0){ activeStepIndex--; setActiveQuizStep(activeStepIndex); } });
+    document.getElementById("saveToProfileBtn")?.addEventListener("click", saveCareersToDashboard);
+    document.getElementById("redoQuizBtn")?.addEventListener("click", () => { userSelectedAnswers = []; activeStepIndex = 0; renderQuizSteps(); navigateTo("quiz"); });
+    document.getElementById("retakeQuizFromDashBtn")?.addEventListener("click", () => { userSelectedAnswers = []; activeStepIndex = 0; renderQuizSteps(); navigateTo("quiz"); });
+    document.getElementById("setGoalBtnAction")?.addEventListener("click", () => { let goalText = document.getElementById("goalInputField").value; if(goalText){ localStorage.setItem("futurepath_goal_value", goalText); updateDashboardUI(); } });
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", (e) => { e.preventDefault(); const target = link.dataset.nav; if(target === "quiz") { userSelectedAnswers = []; activeStepIndex = 0; renderQuizSteps(); } navigateTo(target); });
+    });
+ 
+    const darkToggle = document.getElementById("darkModeToggleBtn");
+    let darkEnabled = true;
+    darkToggle?.addEventListener("click", () => {
+      if(darkEnabled) {
+        document.body.style.background = "#F1F5F9";
+        document.body.style.color = "#0F172A";
+        document.querySelectorAll(".glass-card, .quiz-card, .stat-card, .testimonial-card, .career-item").forEach(el => el.style.background = "rgba(0,0,0,0.05)");
+        darkEnabled = false;
+      } else {
+        document.body.style.background = "#0F172A";
+        document.body.style.color = "#F1F5F9";
+        document.querySelectorAll(".glass-card, .quiz-card, .stat-card, .testimonial-card, .career-item").forEach(el => el.style.background = "var(--glass-effect)");
+        darkEnabled = true;
+      }
+    });
+
+   
+    const chatBubble = document.createElement("div");
+    chatBubble.style.position = "fixed";
+    chatBubble.style.bottom = "24px";
+    chatBubble.style.right = "24px";
+    chatBubble.style.background = "linear-gradient(135deg, #6C63FF, #00D4FF)";
+    chatBubble.style.borderRadius = "60px";
+    chatBubble.style.padding = "12px 18px";
+    chatBubble.style.cursor = "pointer";
+    chatBubble.style.zIndex = "1000";
+    chatBubble.style.boxShadow = "0 0 15px #6C63FF";
+    chatBubble.innerHTML = '<i class="fas fa-comment-dots"></i> Ask Coach';
+    chatBubble.onclick = () => alert(" Career Tip: Based on your profile, build projects around your top match. Keep growing!");
+    document.body.appendChild(chatBubble);
+
+ 
+    const quotePool = ["“Build skills consistently, success follows.”", "“Your dream job needs your unique mix.”", "“Stay curious, the future is yours.”"];
+    setInterval(() => {
+      const quoteElement = document.getElementById("dailyQuoteBox");
+      if(quoteElement) quoteElement.innerHTML = `<i class="fas fa-quote-right"></i> ${quotePool[Math.floor(Math.random()*quotePool.length)]}`;
+    }, 14000);
+  });
+</script>
 </body>
 </html>
