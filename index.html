@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
 <head>
    <meta charset = "UTF-8" >
@@ -346,13 +346,6 @@
         <div class="feature-card glass-card"><i class="fas fa-chart-simple"></i><h3>Salary & Demand</h3><p>Future outlook & earning potential</p></div>
       </div>
     </section>
-    <section>
-      <h2 style="text-align: center;"> Real Voices</h2>
-      <div class="testimonials">
-        <div class="testimonial-card glass-card"><i class="fas fa-quote-left"></i><p>“FuturePath gave me clarity in 5 minutes — now I'm pursuing Data Science with a clear roadmap!”</p><h4>— Emily R.</h4></div>
-        <div class="testimonial-card glass-card"><i class="fas fa-quote-left"></i><p>“The UI is stunning and results are super accurate. Finally a career tool for Gen Z!”</p><h4>— James L.</h4></div>
-      </div>
-    </section>
   </div>
 </div>
 
@@ -401,43 +394,44 @@
   </div>
 </div>
 
+
 <footer>
-  <p>© 2025 FuturePath — Career mapping for next-gen builders </p>
+  <p>© 2025 FuturePath — Career planning for next-gen builders </p>
 </footer>
 <script>
   const quizQuestionsList = [
-    { text: "What subjects do you enjoy?", options: ["Math & Tech", "Arts & Design", "Biology & Health", "Business & Communication"] },
-    { text: "Do you prefer creativity or logic?", options: ["Creativity", "Logic & Analysis", "Both equally"] },
-    { text: "Do you enjoy teamwork?", options: ["Love teamwork", "Prefer solo", "Balanced"] },
-    { text: "Do you like technology?", options: ["Absolutely!", "Somewhat", "Not really"] },
+      { text: "What subjects do you enjoy?",  options  : [ "Math & Tech" , "Arts & Design" , "Biology & Health"  , "Business & Communication" ]  } ,
+  { text: "Do you prefer creativity or logic?" , options : ["Creativity" , "Logic & Analysis"  , "Both equally"]  } ,
+       { text: "Do you enjoy teamwork ? " , options : ["Love teamwork", "Prefer solo", "Balanced"] } ,
+  { text:  "Do you like technology?", options: ["Absolutely!", "Somewhat", "Not really"] },
     { text: "Are you interested in helping people?", options: ["Yes, deeply", "Occasionally", "Neutral"] },
-    { text: "Do you enjoy solving problems?", options: ["Love challenges", "Only if structured", "Not my priority"] }
+      { text: "Do you enjoy solving problems?" , options  : ["Love challenges",   "Only if structured", "Not my priority"] }
   ];
 
   const careerDataMap = {
-    "Software Engineering": { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Neutral","Love challenges"], majors: "Computer Science, Software Engineering", jobs: "Full-stack Dev, Cloud Engineer", skills: "Python, JavaScript, DSA, Git", salary: "$95k - $150k", demand: "Very High", roadmap: "CS50 → LeetCode → Portfolio" },
+      "Software Engineering" : { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Neutral","Love challenges"], majors: "Computer Science, Software Engineering", jobs: "Full-stack Dev, Cloud Engineer", skills: "Python, JavaScript, DSA, Git", salary: "$95k - $150k", demand: "Very High", roadmap: "CS50 → LeetCode → Portfolio" },
     "UI/UX Design": { matchKeywords: ["Arts & Design","Creativity","Balanced","Somewhat","Occasionally","Love challenges"], majors: "Interactive Design, HCI", jobs: "UX Designer, Product Designer", skills: "Figma, User Research, Prototyping", salary: "$75k - $120k", demand: "High", roadmap: "Google UX Cert → Case Studies" },
-    "Cybersecurity": { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Neutral","Love challenges"], majors: "Cybersecurity, InfoSec", jobs: "Security Analyst, Pen Tester", skills: "Network Security, Linux, Cryptography", salary: "$90k - $160k", demand: "Very High", roadmap: "Security+ → CTF → CISSP" },
+      "Cybersecurity" : { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Neutral","Love challenges"], majors: "Cybersecurity, InfoSec", jobs: "Security Analyst, Pen Tester", skills: "Network Security, Linux, Cryptography", salary: "$90k - $160k", demand: "Very High", roadmap: "Security+ → CTF → CISSP" } ,
     "Medicine": { matchKeywords: ["Biology & Health","Logic & Analysis","Love teamwork","Somewhat","Yes, deeply","Love challenges"], majors: "Pre-Med, Nursing", jobs: "Physician, Surgeon", skills: "Empathy, Diagnostics, Anatomy", salary: "$200k+", demand: "Always High", roadmap: "MCAT → Med School → Residency" },
-    "Data Science": { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Occasionally","Love challenges"], majors: "Data Science, Statistics", jobs: "Data Analyst, ML Engineer", skills: "SQL, Python, ML, Tableau", salary: "$85k - $140k", demand: "Explosive", roadmap: "Python → Statistics → Kaggle" },
+      "Data Science": { matchKeywords: ["Math & Tech","Logic & Analysis","Balanced","Absolutely!","Occasionally","Love challenges"], majors: "Data Science, Statistics", jobs: "Data Analyst, ML Engineer", skills: "SQL, Python, ML, Tableau", salary: "$85k - $140k", demand: "Explosive", roadmap: "Python → Statistics → Kaggle" },
     "Marketing": { matchKeywords: ["Business & Communication","Creativity","Love teamwork","Somewhat","Occasionally","Only if structured"], majors: "Marketing, Communications", jobs: "Brand Manager, Digital Marketer", skills: "SEO, Content Strategy, Analytics", salary: "$60k - $110k", demand: "Stable", roadmap: "Google Digital Garage → HubSpot" }
   };
 
-  let userSelectedAnswers = [];
-  let activeStepIndex = 0;
-  let latestCareerMatches = null;
-  let careerChartInstance = null;
+  let userSelectedAnswers = [] ;
+    let activeStepIndex = 0 ;
+  let latestCareerMatches = null ;
+   let careerChartInstance = null ;
 
-  // helpers
   function renderQuizSteps() {
     const container = document.getElementById("quizStepsWrapper");
     if(!container) return;
-    let htmlOutput = `<div class="quiz-step active-quiz-step" data-step-index="0">${generateStepMarkup(0)}</div>`;
+       let htmlOutput = `<div class="quiz-step active-quiz-step" data-step-index="0">${generateStepMarkup(0)}</div>` ;
     for(let i=1; i<quizQuestionsList.length; i++) {
-      htmlOutput += `<div class="quiz-step" data-step-index="${i}">${generateStepMarkup(i)}</div>`;
+       htmlOutput += `<div class="quiz-step" data-step-index="${i}">${generateStepMarkup(i)}</div>` ;
+
     }
-    container.innerHTML = htmlOutput;
-    attachQuizCardEvents();
+    container.innerHTML =  htmlOutput ;
+     attachQuizCardEvents();
     updateProgressFill();
   }
 
@@ -452,11 +446,11 @@
   }
 
   function getIconBasedOnOption(opt) {
-    if(opt.includes("Tech") || opt.includes("Math")) return "fa-laptop-code";
+       if(opt.includes("Tech") || opt.includes("Math")) return "fa-laptop-code" ;
     if(opt.includes("Arts") || opt.includes("Creativity")) return "fa-palette";
-    if(opt.includes("Biology") || opt.includes("Health")) return "fa-heartbeat";
+ if(opt.includes("Biology") || opt.includes("Health")) return "fa-heartbeat" ;
     if(opt.includes("Business")) return "fa-chart-line";
-    if(opt.includes("Teamwork")) return "fa-users";
+      if(opt.includes("Teamwork")) return "fa-users";
     return "fa-star";
   }
 
@@ -464,11 +458,11 @@
     document.querySelectorAll(".quiz-card").forEach(card => {
       card.addEventListener("click", (e) => {
         const parentStepDiv = card.closest(".quiz-step");
-        const stepNumber = parseInt(parentStepDiv.dataset.stepIndex);
+           const stepNumber = parseInt(parentStepDiv.dataset.stepIndex);
         const chosenValue = card.dataset.optValue;
-        userSelectedAnswers[stepNumber] = chosenValue;
+           userSelectedAnswers[stepNumber] = chosenValue;
         document.querySelectorAll(`.quiz-step[data-step-index="${stepNumber}"] .quiz-card`).forEach(c => c.classList.remove("selected-answer"));
-        card.classList.add("selected-answer");
+          card.classList.add("selected-answer");
         updateProgressFill();
       });
     });
@@ -532,10 +526,10 @@
     if(latestCareerMatches) {
       let storedCareers = JSON.parse(localStorage.getItem("futurepath_saved_list") || "[]");
       const newCareerNames = latestCareerMatches.map(c => c[0]);
-      newCareerNames.forEach(c => { if(!storedCareers.includes(c)) storedCareers.push(c); });
+        newCareerNames.forEach(c => { if(!storedCareers.includes(c)) storedCareers.push(c); });
       localStorage.setItem("futurepath_saved_list", JSON.stringify(storedCareers));
-      updateDashboardUI();
-      alert("Saved to your dashboard!");
+         updateDashboardUI();
+        alert("Saved to your dashboard!");
     } else { alert("Complete the quiz first."); }
   }
 
@@ -568,19 +562,19 @@
   function navigateTo(pageId) {
     document.querySelectorAll(".page-block").forEach(block => block.classList.add("hide-section"));
     if(pageId === "landing") document.getElementById("landingContainer").classList.remove("hide-section");
-    if(pageId === "quiz") document.getElementById("quizContainer").classList.remove("hide-section");
+       if(pageId === "quiz") document.getElementById("quizContainer").classList.remove("hide-section");
     if(pageId === "results") document.getElementById("resultsContainer").classList.remove("hide-section");
-    if(pageId === "dashboard") { document.getElementById("dashboardContainer").classList.remove("hide-section"); updateDashboardUI(); }
+       if(pageId === "dashboard") { document.getElementById("dashboardContainer").classList.remove("hide-section"); updateDashboardUI(); }
     document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active-page"));
     document.querySelector(`[data-nav="${pageId}"]`).classList.add("active-page");
-    if(pageId === "results" && latestCareerMatches) displayCareerResults();
+        if(pageId === "results" && latestCareerMatches) displayCareerResults();
   }
 
   
   window.addEventListener("load", () => {
     setTimeout(() => { document.getElementById("loadingOverlay").style.display = "none"; }, 700);
-    renderQuizSteps();
-    navigateTo("landing");
+        renderQuizSteps();
+      navigateTo("landing");
 
   
     document.getElementById("beginQuizBtn")?.addEventListener("click", () => { navigateTo("quiz"); });
@@ -595,11 +589,11 @@
       }
     });
     document.getElementById("quizPrevBtn")?.addEventListener("click", () => { if(activeStepIndex > 0){ activeStepIndex--; setActiveQuizStep(activeStepIndex); } });
-    document.getElementById("saveToProfileBtn")?.addEventListener("click", saveCareersToDashboard);
+       document.getElementById("saveToProfileBtn")?.addEventListener("click", saveCareersToDashboard);
     document.getElementById("redoQuizBtn")?.addEventListener("click", () => { userSelectedAnswers = []; activeStepIndex = 0; renderQuizSteps(); navigateTo("quiz"); });
-    document.getElementById("retakeQuizFromDashBtn")?.addEventListener("click", () => { userSelectedAnswers = []; activeStepIndex = 0; renderQuizSteps(); navigateTo("quiz"); });
+     document.getElementById("retakeQuizFromDashBtn")?.addEventListener("click", () => { userSelectedAnswers = []; activeStepIndex = 0; renderQuizSteps(); navigateTo("quiz"); });
     document.getElementById("setGoalBtnAction")?.addEventListener("click", () => { let goalText = document.getElementById("goalInputField").value; if(goalText){ localStorage.setItem("futurepath_goal_value", goalText); updateDashboardUI(); } });
-    document.querySelectorAll(".nav-link").forEach(link => {
+       document.querySelectorAll(".nav-link").forEach(link => {
       link.addEventListener("click", (e) => { e.preventDefault(); const target = link.dataset.nav; if(target === "quiz") { userSelectedAnswers = []; activeStepIndex = 0; renderQuizSteps(); } navigateTo(target); });
     });
  
@@ -607,36 +601,36 @@
     let darkEnabled = true;
     darkToggle?.addEventListener("click", () => {
       if(darkEnabled) {
-        document.body.style.background = "#F1F5F9";
-        document.body.style.color = "#0F172A";
-        document.querySelectorAll(".glass-card, .quiz-card, .stat-card, .testimonial-card, .career-item").forEach(el => el.style.background = "rgba(0,0,0,0.05)");
+    document.body.style.background = "#F1F5F9";
+          document.body.style.color = "#0F172A";
+         document.querySelectorAll(".glass-card, .quiz-card, .stat-card, .testimonial-card, .career-item").forEach(el => el.style.background = "rgba(0,0,0,0.05)");
         darkEnabled = false;
       } else {
-        document.body.style.background = "#0F172A";
-        document.body.style.color = "#F1F5F9";
-        document.querySelectorAll(".glass-card, .quiz-card, .stat-card, .testimonial-card, .career-item").forEach(el => el.style.background = "var(--glass-effect)");
+       document.body.style.background = "#0F172A";
+         document.body.style.color = "#F1F5F9";
+   document.querySelectorAll(".glass-card, .quiz-card, .stat-card, .testimonial-card, .career-item").forEach(el => el.style.background = "var(--glass-effect)");
         darkEnabled = true;
       }
     });
 
    
     const chatBubble = document.createElement("div");
-    chatBubble.style.position = "fixed";
+       chatBubble.style.position = "fixed";
     chatBubble.style.bottom = "24px";
-    chatBubble.style.right = "24px";
+      chatBubble.style.right = "24px";
     chatBubble.style.background = "linear-gradient(135deg, #6C63FF, #00D4FF)";
-    chatBubble.style.borderRadius = "60px";
-    chatBubble.style.padding = "12px 18px";
+     chatBubble.style.borderRadius = "60px";
+       chatBubble.style.padding = "12px 18px";
     chatBubble.style.cursor = "pointer";
     chatBubble.style.zIndex = "1000";
-    chatBubble.style.boxShadow = "0 0 15px #6C63FF";
+      chatBubble.style.boxShadow = "0 0 15px #6C63FF";
     chatBubble.innerHTML = '<i class="fas fa-comment-dots"></i> Ask Coach';
-    chatBubble.onclick = () => alert(" Career Tip: Based on your profile, build projects around your top match. Keep growing!");
-    document.body.appendChild(chatBubble);
+      chatBubble.onclick = () => alert(" Career Tip: Based on your profile, build projects around your top match. Keep growing!");
+     document.body.appendChild(chatBubble);
 
  
     const quotePool = ["“Build skills consistently, success follows.”", "“Your dream job needs your unique mix.”", "“Stay curious, the future is yours.”"];
-    setInterval(() => {
+      setInterval(() => {
       const quoteElement = document.getElementById("dailyQuoteBox");
       if(quoteElement) quoteElement.innerHTML = `<i class="fas fa-quote-right"></i> ${quotePool[Math.floor(Math.random()*quotePool.length)]}`;
     }, 14000);
